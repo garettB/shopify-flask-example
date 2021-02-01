@@ -24,20 +24,20 @@ ngrok http 5000
 ```
 Throughout the development process, ngrok should be running in the background. You will not need to restart this, as you will generate a new URL.
 
-4. Set up your Shopify app, following [these](https://github.com/garettB/shopify-flask-example#app-creation) steps
+4. Set up your Shopify app, following [these](https://github.com/garettB/shopify-flask-example#app-creation) steps.
 
 5. Create a local `.env` file by copying over the template
 ```
 cp .env.template .env
 ```
 
-6. Fill out your `.env` file using your Shopify API key and Shopify secret key. Replace `your_server.hostname` with your ngrok base URL.
+6. Fill out your `.env` file using your Shopify API key and Shopify secret key. Replace `your_server.hostname` with your ngrok base URL. Do not put quotations around the values.
 
 7. Install the app onto a Shopify test store by following [these](https://github.com/garettB/shopify-flask-example#ready-to-test) steps. If you do not have one, create one.
 
 8. You should be redirected to the admin dashboard of your test store. The url should be formatted as follows
 ```
-https://{{store_name}}.myshopify.com/admin/apps/{{app_name}}
+https://{{store_name}}.myshopify.com/admin/apps/{{app_name}}/app_launched
 ```
 
 

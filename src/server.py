@@ -8,7 +8,12 @@ from flask import Flask, redirect, request, render_template
 import helpers
 from shopify_client import ShopifyStoreClient
 
-from config import WEBHOOK_APP_UNINSTALL_URL
+from dotenv import load_dotenv
+
+load_dotenv()
+WEBHOOK_APP_UNINSTALL_URL = os.environ.get('WEBHOOK_APP_UNINSTALL_URL')
+print('webhook', WEBHOOK_APP_UNINSTALL_URL)
+
 
 app = Flask(__name__)
 
