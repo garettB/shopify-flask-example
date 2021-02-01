@@ -6,11 +6,46 @@ I created this extremely simplistic, but hollistic, app for Shopify using Flask 
 
 Very simply, this sample will create the server-side component for your Shopify app and provide you some basic tools which you can build on to create a ~~more~~ robust commercial application.
 
+## Setup
+1. Install dependencies
+```
+pip3 install -r requirements.txt
+```
+
+2. Run the app locally. If you are located in the root directory:
+```
+python3 src/server.py
+```
+Leave this running. If new changes fail to appear, restart the server.
+
+3. Set up [ngrok](https://ngrok.com/) by installing it and running it locally.
+```
+ngrok http 5000
+```
+Throughout the development process, ngrok should be running in the background. You will not need to restart this, as you will generate a new URL.
+
+4. Set up your Shopify app, following [these](https://github.com/garettB/shopify-flask-example#app-creation) steps
+
+5. Create a local `.env` file by copying over the template
+```
+cp .env.template .env
+```
+
+6. Fill out your `.env` file using your Shopify API key and Shopify secret key. Replace `your_server.hostname` with your ngrok base URL.
+
+7. Install the app onto a Shopify test store by following [these](https://github.com/garettB/shopify-flask-example#ready-to-test) steps. If you do not have one, create one.
+
+8. You should be redirected to the admin dashboard of your test store. The url should be formatted as follows
+```
+https://{{store_name}}.myshopify.com/admin/apps/{{app_name}}
+```
+
+
 ### `server.py`
 
 This file is the Flask interface, it is where I defined all (4) of the supported web calls. This file receives calls both from the basic Shopify web lifecycle calls as well as webhooks that your app may be listening to. This file stores shop access tokens and nonces in memory, for a production application you'll want to use a more long-lived solution, like a database.
 
-I will break down how this file works more in the [Walkthrough]() section of this README.
+I will break down how this file works more in the [Walkthrough](https://github.com/garettB/shopify-flask-example#walkthrough) section of this README.
 
 ### `helpers.py`
 
