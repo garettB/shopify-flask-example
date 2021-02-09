@@ -2,14 +2,20 @@ from functools import wraps
 from typing import List
 import logging
 
+import os
 import re
 import hmac
 import base64
 import hashlib
 from flask import request, abort
 
-from config import SHOPIFY_SECRET, SHOPIFY_API_KEY, INSTALL_REDIRECT_URL, APP_NAME
+from dotenv import load_dotenv
 
+load_dotenv()
+SHOPIFY_SECRET = os.environ.get('SHOPIFY_SECRET')
+SHOPIFY_API_KEY = os.environ.get('SHOPIFY_API_KEY')
+INSTALL_REDIRECT_URL = os.environ.get('INSTALL_REDIRECT_URL')
+APP_NAME = os.environ.get('APP_NAME')
 
 def generate_install_redirect_url(shop: str, scopes: List, nonce: str, access_mode: List):
     scopes_string = ','.join(scopes)

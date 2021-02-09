@@ -1,3 +1,4 @@
+import os
 import json
 from typing import List
 import logging
@@ -5,7 +6,12 @@ import logging
 import requests
 from requests.exceptions import HTTPError
 
-from config import SHOPIFY_SECRET, SHOPIFY_API_KEY
+from dotenv import load_dotenv
+
+load_dotenv()
+
+SHOPIFY_SECRET = os.environ.get('SHOPIFY_SECRET')
+SHOPIFY_API_KEY = os.environ.get('SHOPIFY_API_KEY')
 
 
 SHOPIFY_API_VERSION = "2020-01"
