@@ -1,0 +1,84 @@
+hoe run shopify flask app in localhost
+
+system specification  
+
+OS Ubuntu 20.04 LST
+
+```
+python
+Python 3.8.5 (default, Jan 27 2021, 15:41:15) 
+
+```
+installing python pip3 
+
+$ sudo apt-get install python3-pip
+
+
+[option ] you can you system python  environments
+
+$ sudo apt install python3-virtualenv   
+$ sudo apt-get install python3-venv
+
+creating python virtual environments
+
+$ python3 -m venv myvenv
+
+Activate the virtual environments
+
+$ source myvenv/bin/activate
+
+now your terminal look likes 
+(myvenv) user@sys $ 
+
+
+download the code from  https://github.com/garettB/shopify-flask-example/archive/refs/heads/master.zip 
+[  or you can clone use for git  ]
+
+
+(myvenv) user@sys $  #goto code root directory 
+(myvenv) user@sys $  ll  #chech the requirements.txt avalable in curent path 
+(myvenv) user@sys $  pip3 install -r requirements.txt
+(myvenv) user@sys $ cd src/
+(myvenv) user@sys $  cp .env.template .env
+
+## add the shopify app credetails and ngrock url (any public url )
+## add into .env file
+
+(myvenv) user@sys $   python3 src/server.py
+
+##open new terminal and run ngrock 
+
+user@sys $ ngrok http 5000
+
+##output 
+******************
+
+ngrok by @inconshreveable                                                                                                                                                                  (Ctrl+C to quit)
+                                                                                                                                                                                                           
+Session Status                online                                                                                                                                                                       
+Account                       Sanjay  (Plan: Free)                                                                                                                                                  
+Version                       2.3.39                                                                                                                                                                       
+Region                        United States (us)                                                                                                                                                           
+Web Interface                 http://127.0.0.1:4040                                                                                                                                                        
+Forwarding                    http://646d5eac9105.ngrok.io -> http://localhost:5000                                                                                                                        
+Forwarding                    https://646d5eac9105.ngrok.io -> http://localhost:5000                                                                                                                       
+                                                                                                                                                                                                           
+Connections                   ttl     opn     rt1     rt5     p50     p90                                                                                                                                  
+                              0       0       0.00    0.00    0.00    0.00 
+
+
+***********************
+
+update https url into app settings 
+
+App URL
+https://5a998b8a1389.ngrok.io/app_launched
+
+Preferences URL (optional)
+e.g. https://example.com/preferences
+
+Allowed redirection URL(s)
+https://5a998b8a1389.ngrok.io/app_installed
+
+
+update the app url then goto app setting below you will find install app choose your store for app installing  
