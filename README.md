@@ -28,7 +28,7 @@ Throughout the development process, ngrok should be running in the background. Y
 
 5. Create a local `.env` file by copying over the template
 ```
-cp .env.template .env
+cp ./flask/.env.template ./flask/.env
 ```
 
 6. Fill out your `.env` file using your Shopify API key and Shopify secret key. Replace `your_server.hostname` with your ngrok base URL. Do not put quotations around the values.
