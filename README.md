@@ -28,7 +28,7 @@ Throughout the development process, ngrok should be running in the background. Y
 
 5. Create a local `.env` file by copying over the template
 ```
-cp .env.template .env
+cp ./src/.env.template .env
 ```
 
 6. Fill out your `.env` file using your Shopify API key and Shopify secret key. Replace `your_server.hostname` with your ngrok base URL. Do not put quotations around the values.
@@ -51,9 +51,9 @@ I will break down how this file works more in the [Walkthrough](https://github.c
 
 This file contains some basic supporting functions, such as those used to validate the web and webhook calls received by `server.py` and to generate our redirect URLs (again, explained more down below).
 
-### `config.py`
+### `.env`
 
-This is where you will place your app-specific configuration values. For a production application **DO NOT** keep your sensitive values (i.e. `SHOPIFY_SECRET`, `SHOPIFY_API_KEY`) in your source code, I included them in the source for simplicity.
+This is where you will place your app-specific configuration values. For a production application **DO NOT** keep your sensitive values (i.e. `SHOPIFY_SECRET`, `SHOPIFY_API_KEY`) in your source code.
 
 ### `shopify_client.py`
 
@@ -66,7 +66,7 @@ Before you get too far, you'll need to host your app somewhere so Shopify can hi
 
 ## App Creation
 
-Whatever you use to host your app, make sure you can browse to it in a web browser (https://<hostname>/app_launched). You should receive a big ugly **Bad Request** error, that's expected. For now copy the <hostname> value into the `config.py` file for the `SERVER_HOSTNAME` variable. Now let's open the Shopify Partner's doashboard and create our app:
+Whatever you use to host your app, make sure you can browse to it in a web browser (https://<hostname>/app_launched). You should receive a big ugly **Bad Request** error, that's expected. For now copy the <hostname> value into the `.env` file for the `SERVER_HOSTNAME` variable. Now let's open the Shopify Partner's doashboard and create our app:
 
 ![](images/step1.png)
 
@@ -78,14 +78,14 @@ Next give your app a name and enter the URLs for your web server, `https://<host
 
 ![](images/step3.png)
 
-Copy the name you gave your app to the `APP_NAME` variable in the `config.py` file (NOTE: replace spaces with hyphens, so "my test app" should be assigned to `APP_NAME` as "my-test-app"). 
+Copy the name you gave your app to the `APP_NAME` variable in the `.env` file (NOTE: replace spaces with hyphens, so "my test app" should be assigned to `APP_NAME` as "my-test-app"). 
 
 Now click that purple "Create App" button at the top of the page.
 
-Your app is now created, and you will be presented with your API Keys on this next page. Copy the API key and API secret key to the `SHOPIFY_API_KEY` and `SHOPIFY_SECRET` variables in the `config.py` file (respectfully):
+Your app is now created, and you will be presented with your API Keys on this next page. Copy the API key and API secret key to the `SHOPIFY_API_KEY` and `SHOPIFY_SECRET` variables in the `.env` file (respectfully), and replace `your_server.hostname` with your server/hostname in .env (ex: `numbers-numbers-numbers.ngrok.io`):
 ![](images/step4.png)
 
-Your `config.py` file is now fully configured! You should now restart the app so the new values are loaded to your server.
+Your `.env` file is now fully configured! You should now restart the app so the new values are loaded to your server.
 
 ## Ready to test? 
 
