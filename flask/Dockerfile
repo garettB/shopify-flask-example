@@ -1,15 +1,15 @@
-FROM tiangolo/uvicorn-gunicorn:python3.7
+FROM python:3.8-slim-buster
 
-RUN mkdir /fastapi
+RUN mkdir /flask
 
-COPY requirements.txt /fastapi
+COPY requirements.txt /flask
 
-WORKDIR /fastapi
+WORKDIR /flask
 
-RUN pip install -r requirements.txt -f https://download.pytorch.org/whl/torch_stable.html
+RUN pip install -r requirements.txt
 
-COPY . /fastapi
+COPY . /flask
 
-EXPOSE 8000
+EXPOSE 5001
 
-CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["python", "server.py"]

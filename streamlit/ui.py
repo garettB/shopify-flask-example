@@ -7,7 +7,7 @@ from requests_toolbelt.multipart.encoder import MultipartEncoder
 import streamlit as st
 
 # interact with FastAPI endpoint
-backend = "http://fastapi:8000/segmentation"
+backend = "http://fastapi:5001/segmentation"
 
 
 def process(image, server_url: str):
@@ -15,7 +15,7 @@ def process(image, server_url: str):
     m = MultipartEncoder(fields={"file": ("filename", image, "image/jpeg")})
 
     r = requests.post(
-        server_url, data=m, headers={"Content-Type": m.content_type}, timeout=8000
+        server_url, data=m, headers={"Content-Type": m.content_type}, timeout=5001
     )
 
     return r
@@ -27,7 +27,7 @@ st.title("DeepLabV3 image segmentation")
 st.write(
     """Obtain semantic segmentation maps of the image in input via DeepLabV3 implemented in PyTorch.
          This streamlit example uses a FastAPI service as backend.
-         Visit this URL at `:8000/docs` for FastAPI documentation."""
+         Visit this URL at `:5001/docs` for FastAPI documentation."""
 )  # description and instructions
 
 input_image = st.file_uploader("insert image")  # image upload widget

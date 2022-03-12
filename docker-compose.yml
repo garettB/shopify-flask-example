@@ -1,18 +1,18 @@
 version: '3'
 
 services:
-  fastapi:
-    build: fastapi/
+  flask:
+    build: flask/
     ports: 
-      - 8000:8000
+      - 5001:5001
     networks:
       - deploy_network
-    container_name: fastapi
+    container_name: flask
 
   streamlit:
     build: streamlit/
     depends_on:
-      - fastapi
+      - flask
     ports: 
         - 8501:8501
     networks:
