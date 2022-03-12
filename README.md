@@ -14,7 +14,7 @@ pip3 install -r requirements.txt
 
 2. Run the app locally. If you are located in the root directory:
 ```
-python3 src/server.py
+python3 flask/server.py
 ```
 Leave this running. If new changes fail to appear, restart the server.
 
@@ -28,7 +28,7 @@ Throughout the development process, ngrok should be running in the background. Y
 
 5. Create a local `.env` file by copying over the template
 ```
-cp ./src/.env.template .env
+cp .env.template .env
 ```
 
 6. Fill out your `.env` file using your Shopify API key and Shopify secret key. Replace `your_server.hostname` with your ngrok base URL. Do not put quotations around the values.
