@@ -17,7 +17,6 @@ print('webhook', WEBHOOK_APP_UNINSTALL_URL)
 
 app = Flask(__name__)
 
-
 ACCESS_TOKEN = None
 NONCE = None
 ACCESS_MODE = []  # Defaults to offline access mode if left blank or omitted. https://shopify.dev/concepts/about-apis/authentication#api-access-modes
