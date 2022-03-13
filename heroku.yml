@@ -1,4 +1,0 @@
-build:
-  docker:
-    web: streamlit/Dockerfile
-    flask: flask/Dockerfile

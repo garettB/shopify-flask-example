@@ -10,6 +10,6 @@ RUN pip install -r requirements.txt
 
 COPY . /flask
 
-EXPOSE 5001
+EXPOSE $PORT
 
 CMD ["python", "server.py"]
