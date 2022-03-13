@@ -12,4 +12,5 @@ COPY . /streamlit
 
 EXPOSE 8501
 
-CMD ["sh", "setup.sh", "&&", "streamlit", "run", "app.py"]
+CMD ["sh", "setup.sh"]
+CMD ["streamlit", "run", "app.py"]
