@@ -13,7 +13,7 @@ Now Visit:
 http://localhost:5001/app_launched
 
 Test in your shopify app (often you need to refresh the page)
-- You should see the flask server results
+- You should see the flask server results 
 
 
 ## docker on heroku setup
