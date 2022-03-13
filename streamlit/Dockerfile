@@ -11,4 +11,4 @@ RUN pip install -r requirements.txt
 COPY . /streamlit
 
 CMD ["sh", "setup.sh"]
-CMD ["streamlit", "run", "--server.port $PORT", "app.py"]
+CMD ["streamlit run app.py --server.port $PORT"]
