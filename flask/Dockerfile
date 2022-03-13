@@ -11,5 +11,3 @@ RUN pip install -r requirements.txt
 COPY . /flask
 
 EXPOSE 5001
-
-CMD ["python", "server.py"]
