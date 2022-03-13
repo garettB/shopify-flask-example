@@ -1,4 +1,4 @@
-# A Simple Streamlit Shopify App
+# [WIP] A Simple Streamlit Shopify App
 
 I created this extremely simplistic, but hollistic, app for Shopify using Flask to help you learn the basics of the process. I recently created my first Shopify app and while the documentation from Shopify was great, I found it tough to fully grok the entire process. I found many community examples to be somewhat opinionated or built more as an SDK, which are great for some but I prefer a more basic approach, learning a very barebones understanding of the mechanics of the entire app lifecycle, so that's what I focused on for this project.
 
