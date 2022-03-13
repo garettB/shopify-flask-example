@@ -2,6 +2,3 @@ build:
   docker:
     web: streamlit/Dockerfile
     worker: flask/Dockerfile
-run:
-  web: sh ./streamlit/setup.sh && streamlit run ./streamlit/app.py
-  worker: python ./flask/server.py

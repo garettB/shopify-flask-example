@@ -11,3 +11,5 @@ RUN pip install -r requirements.txt
 COPY . /streamlit
 
 EXPOSE 8501
+
+CMD ["sh", "setup.sh", "&&", "streamlit", "run", "app.py"]
