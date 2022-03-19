@@ -98,6 +98,9 @@ def dash_auth():
     global NONCE, ACCESS_TOKEN
 
     # The Dash passes our NONCE, created in #app_launched, as the `state` parameter, we need to ensure it matches!
+    print('state and nonce')
+    print(state)
+    print(NONCE)
     if state != NONCE:
         return "Invalid `state` received", 400
 
