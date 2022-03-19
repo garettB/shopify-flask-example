@@ -16,8 +16,13 @@ Test in your shopify app (often you need to refresh the page)
 - You should see the flask server results 
 
 
-## docker on heroku setup
+## deploying to heroku
+```sh
 heroku stack:set container
 heroku git:remote -a shopify-streamlit
 heroku ps:scale web=1
 git push heroku main
+
+heroku config:set SHOPIFY_API_KEY=<your_api_key>
+# repeating for the rest of the .env variables
+```
