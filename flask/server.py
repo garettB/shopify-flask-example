@@ -28,13 +28,14 @@ SCOPES = ['write_script_tags']  # https://shopify.dev/docs/admin-api/access-scop
 def app_launched():
     shop = request.args.get('shop')
     global ACCESS_TOKEN, NONCE
-
-    if ACCESS_TOKEN:
-        return render_template('welcome.html', shop=shop)
-
     # The NONCE is a single-use random value we send to Shopify so we know the next call from Shopify is valid (see #app_installed)
     #   https://en.wikipedia.org/wiki/Cryptographic_nonce
     NONCE = uuid.uuid4().hex
+
+    if ACCESS_TOKEN:
+        redirect_url = helpers.generate_dash_redirect_url(shop=shop, nonce=NONCE)
+        return redirect(redirect_url, code=200)
+
     redirect_url = helpers.generate_install_redirect_url(shop=shop, scopes=SCOPES, nonce=NONCE, access_mode=ACCESS_MODE)
     return redirect(redirect_url, code=302)
 
@@ -88,6 +89,22 @@ def data_removal_request():
     # https://shopify.dev/tutorials/add-gdpr-webhooks-to-your-app
     # Clear all personal information you may have stored about the specified shop
     return "OK"
+
+
+@app.route('/dash_auth', methods=['GET'])
+@helpers.verify_web_call
+def dash_auth():
+    state = request.args.get('state')
+    global NONCE, ACCESS_TOKEN
+
+    # The Dash passes our NONCE, created in #app_launched, as the `state` parameter, we need to ensure it matches!
+    if state != NONCE:
+        return "Invalid `state` received", 400
+
+    if ACCESS_TOKEN:
+        return 200 # success
+    # Ok, NONCE matches, we can get rid of it now (a nonce, by definition, should only be used once)
+    NONCE = None
 
 
 if __name__ == '__main__':

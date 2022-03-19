@@ -23,6 +23,9 @@ def generate_install_redirect_url(shop: str, scopes: List, nonce: str, access_mo
     redirect_url = f"https://{shop}/admin/oauth/authorize?client_id={SHOPIFY_API_KEY}&scope={scopes_string}&redirect_uri={INSTALL_REDIRECT_URL}&state={nonce}&grant_options[]={access_mode_string}"
     return redirect_url
 
+def generate_dash_redirect_url(shop: str, nonce: str):
+    redirect_url = f"https://shoplit-dash.herokuapp.com/?shop={shop}&state={nonce}"
+    return redirect_url
 
 def generate_post_install_redirect_url(shop: str):
     redirect_url = f"https://{shop}/admin/apps/{APP_NAME}"
