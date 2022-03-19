@@ -92,7 +92,6 @@ def data_removal_request():
 
 
 @app.route('/dash_auth', methods=['GET'])
-@helpers.verify_web_call
 def dash_auth():
     state = request.args.get('state')
     global NONCE, ACCESS_TOKEN
