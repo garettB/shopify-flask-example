@@ -102,7 +102,7 @@ def dash_auth():
         logging.error('state and nonce not equal')
         logging.error(f'state: {state}')
         logging.error(f'nonce: {NONCE}')
-        return "Invalid `state` received", 400
+        return "Invalid `state` received", 401
 
     if ACCESS_TOKEN:
         return 200 # success
