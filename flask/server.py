@@ -17,7 +17,6 @@ print('webhook', WEBHOOK_APP_UNINSTALL_URL)
 
 app = Flask(__name__)
 
-
 ACCESS_TOKEN = None
 NONCE = None
 ACCESS_MODE = []  # Defaults to offline access mode if left blank or omitted. https://shopify.dev/concepts/about-apis/authentication#api-access-modes
@@ -92,6 +91,6 @@ def data_removal_request():
 
 
 if __name__ == '__main__':
-    # Bind to FLASK_PORT if defined, otherwise default to 5001.
-    port = int(os.environ.get('FLASK_PORT', 5001))
+    # Bind to PORT if defined, otherwise default to 5001.
+    port = int(os.environ.get('PORT', 5001))
     app.run(debug=True, host='0.0.0.0', port=port)
