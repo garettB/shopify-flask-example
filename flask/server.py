@@ -101,10 +101,10 @@ def dash_auth():
         logging.error('state and nonce not equal')
         logging.error(f'state: {state}')
         logging.error(f'nonce: {NONCE}')
-        return "Invalid `state` received", 401
+        return "Invalid `state` received", 400
 
     if ACCESS_TOKEN:
-        return 200 # success
+        return "Success", 200 # success
     # Ok, NONCE matches, we can get rid of it now (a nonce, by definition, should only be used once)
     NONCE = None
 
