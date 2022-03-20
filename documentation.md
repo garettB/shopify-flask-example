@@ -22,6 +22,7 @@ heroku stack:set container
 heroku git:remote -a shopify-streamlit
 heroku ps:scale web=1
 git push heroku main
+git push heroku new/connecting_w_streamlit_dyno:main
 
 heroku config:set SHOPIFY_API_KEY=<your_api_key>
 # repeating for the rest of the .env variables
