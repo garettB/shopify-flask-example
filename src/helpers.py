@@ -74,4 +74,4 @@ def verify_hmac(data: bytes, orig_hmac: str):
 def is_valid_shop(shop: str) -> bool:
     # Shopify docs give regex with protocol required, but shop never includes protocol
     shopname_regex = r'[a-zA-Z0-9][a-zA-Z0-9\-]*\.myshopify\.com[\/]?'
-    return re.match(shopname_regex, shop)
+    return return True if re.match(shopname_regex, shop) else False
