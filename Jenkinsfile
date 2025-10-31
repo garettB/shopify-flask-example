@@ -1,7 +1,5 @@
 pipeline{
-    agent {
-        docker { image 'python:3.11' }  // ✅ Uses a Python-ready image
-    }
+    agent any
     environment{
         PYTHON_ENV="venv"
         SONARQUBE = 'sonarqube'
@@ -12,7 +10,7 @@ pipeline{
         stage('Setup Python Environment') {
             steps {
                 sh '''
-                python -m venv ${PYTHON_ENV}
+                python3 -m venv ${PYTHON_ENV}
                 . ${PYTHON_ENV}/bin/activate
                 pip install --upgrade pip
                 pip install -r requirements.txt
@@ -60,4 +58,5 @@ pipeline{
     }
 
 }
+
 
