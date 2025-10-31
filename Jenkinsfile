@@ -10,7 +10,7 @@ pipeline{
         stage('Setup Python Environment') {
             steps {
                 sh '''
-                python3 -m venv ${PYTHON_ENV}
+                python -m venv ${PYTHON_ENV}
                 . ${PYTHON_ENV}/bin/activate
                 pip install --upgrade pip
                 pip install -r requirements.txt
@@ -56,4 +56,5 @@ pipeline{
             }
         }
     }
+
 }
