@@ -1,5 +1,7 @@
 pipeline{
-    agent any
+    agent {
+        docker { image 'python:3.11' }  // ✅ Uses a Python-ready image
+    }
     environment{
         PYTHON_ENV="venv"
         SONARQUBE = 'sonarqube'
@@ -58,3 +60,4 @@ pipeline{
     }
 
 }
+
