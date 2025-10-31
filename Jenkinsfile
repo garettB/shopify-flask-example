@@ -36,14 +36,16 @@ pipeline{
             }
         }
 
-        stage('Build Artifact') {
-            steps {
-                sh '''
-                . ${PYTHON_ENV}/bin/activate
-                python setup.py sdist
-                '''
+         stage('Build Artifact') {
+             steps {
+                 sh '''
+                 . venv/bin/activate
+                 pip install --upgrade pip setuptools wheel
+                 python setup.py sdist
+                 '''
+                }
             }
-        }
+         
 
         stage('Upload to Nexus') {
             steps {
@@ -58,5 +60,6 @@ pipeline{
     }
 
 }
+
 
 
