@@ -47,19 +47,25 @@ pipeline{
             }
          
 
-        stage('Upload to Nexus') {
-            steps {
-                sh '''
-                ARTIFACT=$(ls dist/*.tar.gz)
-                echo "Uploading $ARTIFACT to Nexus..."
-                curl -u ${NEXUS_CREDENTIALS_USR}:${NEXUS_CREDENTIALS_PSW} \
-                     --upload-file $ARTIFACT ${NEXUS_URL}
-                '''
-            }
+       stage('Upload to Nexus') {
+    steps {
+        withCredentials([usernamePassword(credentialsId: 'nexus-credentials', usernameVariable: 'NEXUS_USER', passwordVariable: 'NEXUS_PASS')]) {
+            sh '''
+                echo "Uploading artifacts to Nexus raw repository..."
+                for file in dist/*; do
+                    echo "Uploading $file ..."
+                    curl -u $NEXUS_USER:$NEXUS_PASS \
+                         --upload-file "$file" \
+                         http://192.168.56.23:8081/repository/shopify-flask-example/$(basename $file)
+                done
+            '''
         }
+    }
+}
     }
 
 }
+
 
 
 
