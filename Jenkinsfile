@@ -38,8 +38,11 @@ pipeline{
              steps {
                  sh '''
                  . venv/bin/activate
+                 export BUILD_VERSION=0.1.${BUILD_NUMBER}
+                 echo "Building version $BUILD_VERSION"
                  pip install --upgrade pip setuptools wheel
                  python setup.py sdist
+                 ls -lh dist/
                  '''
                 }
             }
@@ -63,6 +66,7 @@ pipeline{
     }
 
 }
+
 
 
 
