@@ -1,8 +1,12 @@
 from setuptools import setup, find_packages
+import os
+
+# Dynamically pick up version number from Jenkins (if available)
+version = os.getenv("BUILD_VERSION", "0.1.0")
 
 setup(
     name="shopify_flask",
-    version="0.1.0",
+    version=version,
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     include_package_data=True,
