@@ -57,7 +57,7 @@ This is where you will place your app-specific configuration values. For a produ
 
 ### `shopify_client.py`
 
-Despite my naming, this is not a very good Shopify client but it is basic and straightforward, hopefully you can take the mechanics and build it into a client of your own.
+Despite my naming, this is not a very good Shopify client but it is basic and straightforward, hopefully you can take the mechanics and build it into a client of your own. I previously had a number of REST calls in this file which have been updated to GraphQL, but I HAVE NOT TESTED THESE NEW CALLS. I may try to do some testing in the future, but please expect at least some issues with the network calls beyond app installation.
 
 
 # Walkthrough
@@ -66,11 +66,11 @@ Before you get too far, you'll need to host your app somewhere so Shopify can hi
 
 ## App Creation
 
-Whatever you use to host your app, make sure you can browse to it in a web browser (https://<hostname>/app_launched). You should receive a big ugly **Bad Request** error, that's expected. For now copy the <hostname> value into the `.env` file for the `SERVER_HOSTNAME` variable. Now let's open the Shopify Partner's doashboard and create our app:
+Whatever you use to host your app, make sure you can browse to it in a web browser (https://<hostname>/app_launched). You should receive a big ugly **Bad Request** error, that's expected. For now copy the <hostname> value into the `.env` file every place there is the text `your_server.hostname`. Now let's open the Shopify Partner's doashboard and create our app:
 
 ![](images/step1.png)
 
-We'll select a Public App for this example, but feel free to use a Private App if you need:
+Let's create the app from the Developer Dashboard:
 
 ![](images/step2.png)
 
