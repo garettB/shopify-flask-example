@@ -3,6 +3,7 @@ from typing import List, Callable, Any
 from urllib.parse import urlencode
 import logging
 
+import os
 import re
 import hmac
 import base64
@@ -25,6 +26,11 @@ def generate_install_redirect_url(shop: str, scopes: List[str], nonce: str, acce
     print(f"https://{shop}/admin/oauth/authorize?{urlencode(query_params)}")
     return f"https://{shop}/admin/oauth/authorize?{urlencode(query_params)}"
 
+load_dotenv()
+SHOPIFY_SECRET = os.environ.get('SHOPIFY_SECRET')
+SHOPIFY_API_KEY = os.environ.get('SHOPIFY_API_KEY')
+INSTALL_REDIRECT_URL = os.environ.get('INSTALL_REDIRECT_URL')
+APP_NAME = os.environ.get('APP_NAME')
 
 def generate_post_install_redirect_url(shop: str) -> str:
     """Generates the post-install redirect URL to the app's page in the Shopify admin."""
@@ -77,4 +83,4 @@ def verify_hmac(data: bytes, received_hmac: str, is_webhook: bool = False) -> bo
 def is_valid_shop(shop: str) -> bool:
     # Shopify docs give regex with protocol required, but shop never includes protocol
     shopname_regex = r'[a-zA-Z0-9][a-zA-Z0-9\-]*\.myshopify\.com[\/]?'
-    return re.match(shopname_regex, shop)
+    return True if re.match(shopname_regex, shop) else False
