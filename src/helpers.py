@@ -23,7 +23,6 @@ def generate_install_redirect_url(shop: str, scopes: List[str], nonce: str, acce
         "state": nonce,
         "grant_options[]": ",".join(access_mode)
     }
-    print(f"https://{shop}/admin/oauth/authorize?{urlencode(query_params)}")
     return f"https://{shop}/admin/oauth/authorize?{urlencode(query_params)}"
 
 load_dotenv()
